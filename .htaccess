@@ -1,0 +1,19 @@
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|json|lock|swp)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+
+RewriteEngine on
+RewriteRule ^foros/([0-9]+)\-([a-zA-Z0-9-]*)$ index.php?view=foros&id=$1
+RewriteRule ^temas/([0-9]+)\-([0-9]+)\-([a-zA-Z0-9-]*)$ index.php?view=temas&id=$1&id_foro=$2
+php_value upload_max_filesize 10M
+php_value post_max_size 50M
+php_value max_execution_time 200
+php_value max_input_time 1000
+php_value max_file_uploads 50
